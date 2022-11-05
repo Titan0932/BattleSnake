@@ -22,8 +22,8 @@ def info() -> typing.Dict:
 
     return {
         "apiversion": "1",
-        "author": "",  # TODO: Your Battlesnake Username
-        "color": "#888888",  # TODO: Choose color
+        "author": "Titan0932",  # TODO: Your Battlesnake Username
+        "color": "#88281",  # TODO: Choose color
         "head": "default",  # TODO: Choose head
         "tail": "default",  # TODO: Choose tail
     }
@@ -63,8 +63,18 @@ def move(game_state: typing.Dict) -> typing.Dict:
         is_move_safe["up"] = False
 
     # TODO: Step 1 - Prevent your Battlesnake from moving out of bounds
-    # board_width = game_state['board']['width']
-    # board_height = game_state['board']['height']
+    board_width = game_state['board']['width']
+    board_height = game_state['board']['height']
+    if my_neck["x"]==0:
+        is_move_safe["left"] = False
+    elif my_neck["x"] == board_width:
+        is_move_safe["right"] = False
+
+    if my_neck["y"]==0:
+        is_move_safe["down"] = False
+    elif my_neck["y"] == board_height:
+        is_move_safe["up"] = False
+
 
     # TODO: Step 2 - Prevent your Battlesnake from colliding with itself
     # my_body = game_state['you']['body']
